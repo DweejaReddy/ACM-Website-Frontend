@@ -12,3 +12,4 @@ ACM Website revamped
 * Sahil Purohit
 * [Onkar Bartkke](https://github.com/onkarbartakke)
 * [Sarthak Akre](https://github.com/sarthakakre27)
+* [Dweeja Redddy](https://github.com/DweejaReddy)
