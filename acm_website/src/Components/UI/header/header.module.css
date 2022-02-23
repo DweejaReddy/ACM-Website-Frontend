@@ -2,7 +2,7 @@
   font-size: 1rem;
   font-weight: 900;
 }
-.sticky-top {
+.stickyTop {
   background-image: linear-gradient(
     to right,
     rgba(227, 244, 248, 1),
@@ -10,49 +10,49 @@
   );
   transition: background 0.5s;
 }
-#mainNavbar .navbar-nav {
+.navbarNav {
   margin-left: 18rem;
 }
-#mainNavbar .nav-link {
+.navLink {
   padding: 1rem 1rem;
   color: #333333;
   font-weight: 500;
 }
-#mainNavbar .nav-item{
+.navItem{
   font-size: 1.2em;
 }
-#mainNavbar .nav-item a img {
+.navItem a img {
   display: none;
 }
-#mainNavbar .nav-item:hover a img {
+.navItem:hover a img {
   display: inline;
 }
-#mainNavbar .nav-item .btn1,
+.btn1,
 .btn3 {
   color: #fff;
   border-radius: 20px;
   background-color: #4e8be7;
 }
-#mainNavbar .nav-item .btn2 {
+.btn2 {
   color: #4e8be7;
   border-radius: 20px;
   background-color: white;
   border: 1px solid #4e8be7;
 }
-#mainNavbar .nav-item .btn1:hover,
+.btn1:hover,
 .btn3:hover {
   color: #4e8be7;
   border-radius: 20px;
   background-color: white;
   border: 1px solid #4e8be7;
 }
-#mainNavbar .nav-item .btn2:hover {
+.btn2:hover {
   color: #fff;
   border-radius: 20px;
   background-color: #4e8be7;
 }
 @media only screen and (max-width:768px){
-  #mainNavbar .navbar-nav {
+  .navbarNav {
     margin-left: auto;
   }
 }
