@@ -10,6 +10,7 @@ import Navigation from "./Navigation";
 import PreviewIcon from '@mui/icons-material/Preview';
 import style from "./editor.module.css"
 import Alert from '@mui/material/Alert';
+import Mobileeditor from "./editormobile"
 // import {isAuthenticated} from '../auth/Helpers';
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -104,24 +105,15 @@ const Project = (props) => {
 <>
 
       <div id={style.mobile}>
-        <Alert className="text-center" variant="filled" severity="error">
-        Please switch to Desktop or device of higher resolution
-          </Alert>
-        <img
-       src="https://i.postimg.cc/5N3w9xFT/acmlogo.png"
-       className="m-5 "
-       style={{ height: "20vh",paddingLeft:"13vw",filter:" drop-shadow(5px 5px 5px #ffffff)" }}
-       alt="logo-1"
-     />
-   <iframe  src="https://embed.lottiefiles.com/animation/83087" title="coder" frameBorder="0"style={{pointerEvents: 'none',paddingLeft:"20vw"}}  ></iframe>
 
+ <Mobileeditor/>
       </div>
 
 
   <div id={style.desktop}>
     <div className="Project" style={{ BackgroundImage: "linear-gradient(-45deg,  rgba(90, 209, 240, 1) 0%,  rgba(113, 222, 249, 1) 13%,  rgba(168, 229, 243, 1) 29%,   rgba(110, 241, 252, 0.5) 49%,  rgba(100, 242, 250, 1) 74%,  rgba(113, 222, 249, 1) 94%,  rgb(185, 236, 247) 100%)"}}>
         <Navigation setTheme={setTheme} theme={theme} handleSave={handleSave} fsView={fullScreenView} />
- <FullScreen handle={handle}>
+
     <Box container spacing={1}>
           {!fullScreenView && (
             <Box  display="grid" gridTemplateColumns="repeat(12, 1fr)" >
@@ -154,7 +146,9 @@ const Project = (props) => {
             </Button>
              <Button  className="d-none d-lg-block" size="medium" onClick={handle.enter}><FullscreenIcon/></Button>
               </div>
+              <FullScreen handle={handle}>
             <Output code={totalCode} theme={theme}></Output>
+             </FullScreen>
           </Box>
           <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
             <Alert
@@ -166,7 +160,7 @@ const Project = (props) => {
             </Alert>
           </Snackbar>
         </Box>
-         </FullScreen>
+
       </div>
       </div>
     </>  );

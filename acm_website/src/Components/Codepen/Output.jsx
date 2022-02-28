@@ -4,7 +4,7 @@ const Output = (props) => {
 
   return (
     <div className="output" style={{backgroundColor:"white"}}>
-      <iframe title="Output" srcDoc={props.code} width="100%" height="630vh" sandbox="allow-scripts"
+      <iframe title="Output" srcDoc={props.code} width="100%" height="700vh" sandbox="allow-scripts"
         frameBorder="0"></iframe>
     </div>
   );
