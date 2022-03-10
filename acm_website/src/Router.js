@@ -10,6 +10,7 @@ import Home from "./Components/Login/Home";
 import Reset from "./Components/Login/Reset";
 import Forgot from "./Components/Login/Forgot";
 import HomeScreen from "./Components/Codepen/HomeScreen";
+import Quora from "./Components/DiscussionForum/Quora";
 import Editor from "./Components/Codepen/Editor";
 import RegisterBox from "./Components/Login/Register";
 import LoginBox from "./Components/Login/Login";
@@ -38,6 +39,7 @@ function SiteRouter() {
           <Route path="forgot" exact element={<Forgot />} />
         </Route>
         <Route path="/compiler" exact element={<OnlineCompiler />} />
+				<Route path="/discussion" exact element={<Quora/>} />
         {/* <Route path="/problem-details/:id" exact element={<ProblemDetails />} /> */}
         {/* <Route path="/problem-list" exact element={<ProblemList />} /> */}
       </Routes>
