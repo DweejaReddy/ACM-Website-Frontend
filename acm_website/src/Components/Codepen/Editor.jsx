@@ -2,24 +2,29 @@
 import CodeInput from "./AceEditor";
 import React, { useState, useEffect } from "react";
 import Output from "./Output";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import Box from '@mui/material/Box';
+import Navigation from "./Navigation";
+import PreviewIcon from '@mui/icons-material/Preview';
+import style from "./editor.module.css"
+import Alert from '@mui/material/Alert';
+import Mobileeditor from "./editormobile"
 // import {isAuthenticated} from '../auth/Helpers';
 import { useParams } from "react-router-dom";
-
+import { Button } from "@mui/material";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
 const Project = (props) => {
-  const [jsCode, setjsCode] = useState("");
-  const [htmlCode, sethtmlCode] = useState("");
-  const [cssCode, setcssCode] = useState("");
+  const [jsCode, setjsCode] = useState(" ");
+  const [htmlCode, sethtmlCode] = useState("    <h1 class='welcome'>welcome to ACM</h1><p class='welcome'>Note : Please Give space in each editor before you start</p>");
+  const [cssCode, setcssCode] = useState(".welcome { color: rgb(11, 59, 59); background-color: aliceblue; padding: 3rem;  display:flex ;justify-content: center; } ");
   const [totalCode, settotalCode] = useState("");
   const [fullScreenView, setfullScreenView] = useState(false);
   const [codeMode, setcodeMode] = useState(0);
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState("terminal");
-
+  const [theme, setTheme] = useState("dracula");
   const { id } = useParams();
   let token;
   token = localStorage.getItem("accessToken");
@@ -82,142 +87,82 @@ const Project = (props) => {
       .then(console.log("saved"))
       .catch((err) => console.error(err));
   };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
   const handlemyProjects = () => {
     window.location.href = "/codepen/";
   };
-
   const temp = (value) => {
     console.log(value);
   };
+  const handle = useFullScreenHandle();
   return (
-    <div className="Project">
-      <Grid container spacing={2}>
-        {!fullScreenView && (
-          <Grid item xs={12} md={6} lg={6}>
-            <Button
-              disabled={codeMode === 0}
-              className={
-                codeMode === 0 ? "codeMode-active" : "codeMode-inactive"
-              }
+<>
+
+      <div id={style.mobile}>
+
+ <Mobileeditor/>
+      </div>
+
+
+  <div id={style.desktop}>
+    <div className="Project" style={{ BackgroundImage: "linear-gradient(-45deg,  rgba(90, 209, 240, 1) 0%,  rgba(113, 222, 249, 1) 13%,  rgba(168, 229, 243, 1) 29%,   rgba(110, 241, 252, 0.5) 49%,  rgba(100, 242, 250, 1) 74%,  rgba(113, 222, 249, 1) 94%,  rgb(185, 236, 247) 100%)"}}>
+        <Navigation setTheme={setTheme} theme={theme} handleSave={handleSave} fsView={fullScreenView} />
+
+    <Box container spacing={1}>
+          {!fullScreenView && (
+            <Box  display="grid" gridTemplateColumns="repeat(12, 1fr)" >
+            <Box  gridColumn="span 4">
+              <CodeInput titles="HTML" language="html" value={htmlCode} save={sethtmlCode} theme={theme} />
+            </Box>
+            <Box  gridColumn="span 4">
+           <CodeInput  titles="CSS" language="css" value={cssCode} save={setcssCode} theme={theme} />
+            </Box>
+            <Box  gridColumn="span 4">
+              <CodeInput  titles="JAVASCRIPT" language="javascript" value={jsCode} save={setjsCode} theme={theme} />
+            </Box>
+            </Box>
+          )}
+          <Box
+            item
+            xs={12}
+            md={fullScreenView ? 12 : 6}
+            lg={fullScreenView ? 12 : 6}
+          >
+          <div className=" d-flex justify-content-end mx-4 ">
+            <Button className="FullScreenToggle fixed-bottom m-1"  
               onClick={() => {
-                setcodeMode(0);
-              }}
+                setfullScreenView(!fullScreenView);
+              }} id={style.buttons}
               variant="outlined"
             >
-              {" "}
-              HTML
+            <PreviewIcon/>  View
             </Button>
-            <Button
-              disabled={codeMode === 1}
-              className={
-                codeMode === 1 ? "codeMode-active" : "codeMode-inactive"
-              }
-              onClick={() => {
-                setcodeMode(1);
-              }}
-              variant="outlined"
+             <Button  id={style.buttons}  className="d-none d-lg-block m-1" size="medium" onClick={handle.enter}><FullscreenIcon/></Button>
+              </div>
+              <FullScreen handle={handle}>
+            <Output code={totalCode} theme={theme}></Output>
+             </FullScreen>
+          </Box>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: "100%" }}
             >
-              {" "}
-              CSS
-            </Button>
-            <Button
-              disabled={codeMode === 2}
-              className={
-                codeMode === 2 ? "codeMode-active" : "codeMode-inactive"
-              }
-              onClick={() => {
-                setcodeMode(2);
-              }}
-              variant="outlined"
-            >
-              {" "}
-              JS
-            </Button>
-            {codeMode === 0 && (
-              <CodeInput
-                language="html"
-                value={htmlCode}
-                save={sethtmlCode}
-                setTheme={setTheme}
-                theme={theme}
-              ></CodeInput>
-            )}
-            {codeMode === 1 && (
-              <CodeInput
-                language="css"
-                value={cssCode}
-                save={setcssCode}
-                setTheme={setTheme}
-                theme={theme}
-              ></CodeInput>
-            )}
-            {codeMode === 2 && (
-              <CodeInput
-                language="javascript"
-                value={jsCode}
-                save={setjsCode}
-                setTheme={setTheme}
-                theme={theme}
-              ></CodeInput>
-            )}
-          </Grid>
-        )}
-        <Grid
-          item
-          xs={12}
-          md={fullScreenView ? 12 : 6}
-          lg={fullScreenView ? 12 : 6}
-        >
-          <Button
-            className="FullScreenToggle"
-            onClick={() => {
-              setfullScreenView(!fullScreenView);
-            }}
-            variant="outlined"
-          >
-            View
-          </Button>
-          <Button
-            className="FullScreenToggle"
-            onClick={() => {
-              handleSave();
-            }}
-            variant="outlined"
-          >
-            Save
-          </Button>
-          <Button
-            className="FullScreenToggle"
-            onClick={() => {
-              handlemyProjects();
-            }}
-            variant="outlined"
-          >
-            My Projects
-          </Button>
-          <Output code={totalCode}></Output>
-        </Grid>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert
-            onClose={handleClose}
-            severity="success"
-            sx={{ width: "100%" }}
-          >
-            Project Saved Succesfully!
-          </Alert>
-        </Snackbar>
-      </Grid>
-    </div>
-  );
-};
+              Project Saved Succesfully!
+            </Alert>
+          </Snackbar>
+        </Box>
+
+      </div>
+      </div>
+    </>  );
+  };
 
 export default Project;

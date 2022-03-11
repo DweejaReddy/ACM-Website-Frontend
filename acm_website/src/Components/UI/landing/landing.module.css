@@ -65,9 +65,6 @@ i {
 .icons ul li:nth-child(4) a {
   color: red;
 }
-.sideIcon {
-  display: none;
-}
 .icons ul li a:hover {
   width: 120px;
   z-index: 1;

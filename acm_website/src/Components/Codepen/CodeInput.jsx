@@ -10,6 +10,7 @@ require('codemirror/mode/javascript/javascript.js');
 const CodeInput = (props) => {
     return (
         <div className="codeInput">
+          <h3>hello </h3>
             <CodeMirror
                 classname="CodeMirror"
                 value={props.value}
