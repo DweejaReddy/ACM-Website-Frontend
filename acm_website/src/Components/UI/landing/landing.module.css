@@ -112,6 +112,9 @@ i {
   font-size: 1.5vw;
   font-weight: 400;
 }
+.sideIcon{
+  display: none;
+}
 .glitch {
   position: relative;
   text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
