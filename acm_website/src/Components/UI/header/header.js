@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <nav id="mainNavbar" sticky="true" className={`navbar navbar-light navbar-expand-lg py-0 align-items-center pe-5 ${headerCSS.stickyTop}`} data-aos="fade-down" data-aos-duration={2000}>
+    <nav id="mainNavbar" sticky="true" className={`navbar navbar-light navbar-expand-lg py-0 align-items-center pe-5 ${headerCSS.stickyTop}`} >
       <a href="/" className="navbar-brand">
         <img className="d-none d-lg-block ml-3" src="./image/logo.png" alt="acm" width="250px" />
         <img className="d-sm d-lg-none" src="./image/logo.png" alt="acm" width="200px" /></a>

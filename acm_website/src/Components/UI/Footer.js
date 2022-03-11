@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="col-md-3 col-lg-4 col-xl-3 mb-4 d-lg-flex flex-lg-column">
               {/* <h6 className="text-uppercase fw-bold">ACM VNIT</h6> */}
               {/* <hr className="mt-0 d-inline-block mx-auto" style={{ width: "60px", backgroundColor: "#fff", height: "2px" }} /> */}
-              <img src="./image/logo.png" alt="acm" width="400px" />
+              <img src="https://drive.google.com/uc?export=view&id=1saqVt7YDhxYcamJFyhAt64elrxJ2DULg" alt="acm" width="400px" />
             </div>
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold">Products</h6>

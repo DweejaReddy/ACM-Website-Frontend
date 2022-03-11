@@ -8,7 +8,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import homeStyle from "./home.module.css";
 const NavBar = () => {
     const [name, setName] = useState('');
     const { username } = useParams();
@@ -42,24 +42,38 @@ const NavBar = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    
+      const particlesLoaded = (container) => {
+        console.log(container);
+      };
     return (
-        <div className="Navbar">
+        <div className={`${homeStyle.Navbar}`} style={{height: '0vh'}}>
+             
+            
+
             <Box sx={{ flexGrow: 1 }}>
                 <Toolbar variant="dense">
-                    <h1>{"<CodePro/>"}</h1>
+                    <div>
+                    <Button className={`${homeStyle.btnCreate} `} style={{position: 'relative',letterSpacing: '0.25em',margin: '2rem auto',padding: '1rem 2.5rem',background: 'transparent',outline: 'none',fontSize: '16px',color: '#fff'}} onClick={handleClickOpen}>{"Create now"}<AddBoxIcon></AddBoxIcon></Button>
+                    
                     <div className="homebuttons">
-                        <Dialog open={open} onClose={handleClose}>
-                            <DialogTitle>New Project</DialogTitle>
-                            <DialogContent>
+                        <Dialog open={open} className='text-center' onClose={handleClose}>
+                            <DialogTitle style={{background: 'linear-gradient(to right, #BE5869, #7b4397)',color:'#fff'}}>New Project</DialogTitle>
+                            <DialogContent style={{background: 'linear-gradient(to right, #BE5869, #7b4397)'}}>
                                 <TextField type="text" placeholder="Name of Project" variant="outlined" color="warning"
                                     onChange={(e) => setName(e.target.value)} />
                                 <br />
                                 <br />
-                                <Button variant="text" onClick={handleNewproject}>Create</Button>
+                                
+                                <Button style={{color:'#fff'}} variant="text" onClick={handleNewproject}>Create</Button>
                             </DialogContent>
                         </Dialog>
-                        <Button variant="outlined" className="codeMode-active" component="span" onClick={handleClickOpen}><AddBoxIcon></AddBoxIcon> </Button>
-
+                        {/* <Button variant="outlined" className="codeMode-active" component="span" onClick={handleClickOpen}><AddBoxIcon></AddBoxIcon> </Button> */}
+                        
+                        
+                       
+                        </div>
                     </div>
                 </Toolbar>
             </Box>

@@ -13,6 +13,7 @@ import HomeScreen from "./Components/Codepen/HomeScreen";
 import Editor from "./Components/Codepen/Editor";
 import RegisterBox from "./Components/Login/Register";
 import LoginBox from "./Components/Login/Login";
+import ProjectCard from "./Components/Codepen/ProjectCard";
 
 function SiteRouter() {
   return (
@@ -30,6 +31,7 @@ function SiteRouter() {
           }
         />
         <Route path="/codepen" element={<HomeScreen />} />
+        <Route path="/codepen/projects" element={<ProjectCard />} />
         <Route path="/codepen/projects/:id" exact element={<Editor />} />
         <Route path="/user" exact element={<LoginPage />} >
           <Route path="login" exact element={<LoginBox />} />

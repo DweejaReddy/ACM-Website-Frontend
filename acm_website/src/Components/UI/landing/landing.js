@@ -19,25 +19,25 @@ function Landing() {
             <li>
               <a href>
                 <i className="fab fa-facebook" />
-                <span>Facebook</span>
+                <span className={`${landingCSS.sideIcon}`}>Facebook</span>
               </a>
             </li>
             <li>
               <a href="https://www.linkedin.com/company/acm-student-chapter-vnit/" rel="noreferrer"  target="_blank">
                 <i className="fab fa-linkedin-in" />
-                <span>LinkedIn</span>
+                <span className={`${landingCSS.sideIcon}`}>LinkedIn</span>
               </a>
             </li>
             <li>
               <a href="https://www.instagram.com/acm_vnit/" rel="noreferrer"  target="_blank">
                 <i className="fab fa-instagram" />
-                <span>Instagram</span>
+                <span className={`${landingCSS.sideIcon}`}>Instagram</span>
               </a>
             </li>
             <li>
               <a href>
                 <i className="fab fa-youtube" />
-                <span>Youtube</span>
+                <span className={`${landingCSS.sideIcon}`}>Youtube</span>
               </a>
             </li>
           </ul>
@@ -51,9 +51,8 @@ function Landing() {
           >
             {/* <div className="home_text">Welcome to ACM, VNIT Nagpur</div> */}
             <p className={`${landingCSS.glitch} ${landingCSS.home_text}`}  >
-              <span aria-hidden="true">Welcome to ACM, VNIT Nagpur</span>
+              {/* <span aria-hidden="true">Welcome to ACM, VNIT Nagpur</span> */}
               Welcome to ACM, VNIT Nagpur
-              <span aria-hidden="true">Welcome to ACM, VNIT Nagpur</span>
             </p>
             <div className={`${landingCSS.desc}`}>
               The Association for Computing Machinery is a US-based

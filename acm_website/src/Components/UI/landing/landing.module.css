@@ -65,7 +65,7 @@ i {
 .icons ul li:nth-child(4) a {
   color: red;
 }
-span {
+.sideIcon {
   display: none;
 }
 .icons ul li a:hover {
