@@ -426,6 +426,7 @@ function OnlineCompiler() {
             </Box>
            
             <AceEditor
+            style={{display:'grid',resize:'vertical'}}
               placeholder="//Your Code Here"
               mode={langForEditor}
               showPrintMargin={false}
@@ -445,7 +446,7 @@ function OnlineCompiler() {
                 tabSize: 4,
               }}
               width="100%"
-              height="80vh"
+              height="82vh"
             /> 
         
           </Grid>
@@ -502,7 +503,8 @@ function OnlineCompiler() {
             <Grid container>
               <Grid item sm={12}>
                 <div className="" style={{ display: "none" }} id="input">
-                  <AceEditor
+                  <AceEditor 
+                  style={{display:'flex',resize:'horizontal'}}
                     placeholder="//Input"
                     mode={langForEditor}
                     theme={theme}
@@ -527,6 +529,7 @@ function OnlineCompiler() {
               </Grid>
               <Grid sm={12} className="" id="output">
                 <AceEditor
+                style={{resize:'vertical'}}
                   placeholder="//Output"
                   theme={theme}
                   name="output-box"
