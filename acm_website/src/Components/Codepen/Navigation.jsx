@@ -6,6 +6,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import CodeIcon from '@mui/icons-material/Code';
 import GridViewIcon from '@mui/icons-material/GridView';
 import InputLabel from '@mui/material/InputLabel';
+import style from "./editor.module.css"
 //editor themes
 import "brace/theme/monokai";
 import "brace/theme/dracula";
@@ -27,14 +28,14 @@ const Navigation = (props) => {
       <br/>
       <iframe src="https://embed.lottiefiles.com/animation/16497"  frameBorder="0" title="animatedicons" height="30px" scrolling="no"  style={{pointerEvents:"none"}} > </iframe>
     <div className="mx-3 text-end " style={{marginTop:"-42px"}}>
-<button type="button" target="_blank" class="btn btn-sm btn-outline-primary"><GridViewIcon/> Change View</button>
+<button type="button" target="_blank" class="btn " id={style.buttons} ><GridViewIcon/> Change View</button>
 
-        <button className="FullScreenToggle btn  btn-sm btn-outline-primary" onClick={() => {
+        <button className="FullScreenToggle btn  " id={style.buttons} onClick={() => {
             props.handleSave();
           }} variant="outlined">
         <SaveIcon/>  Save
         </button>
-        <button className="FullScreenToggle btn btn-sm btn-outline-primary" onClick={() => {
+        <button className="FullScreenToggle btn " id={style.buttons}  onClick={() => {
             handlemyProjects();
           }} variant="outlined">
       <CodeIcon/>    My Projects
