@@ -3,7 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Cover from "./Components/Cover";
 import OnlineCompiler from "./Components/online-compiler/OnlineCompiler";
 // import ProblemDetails from "./Components/problems/ProblemDetails";
-// import ProblemList from "./Components/problems/ProblemList";
+import ProblemList from "./Components/problems/ProblemList";
 import LoginPage from "./Components/Login/LoginPage";
 import Home from "./Components/Login/Home";
 // import PrivateRoute from "./Components/auth/PrivateRoute";
@@ -43,7 +43,7 @@ function SiteRouter() {
         <Route path="/compiler" exact element={<OnlineCompiler />} />
 				<Route path="/discussion" exact element={<Quora/>} />
         {/* <Route path="/problem-details/:id" exact element={<ProblemDetails />} /> */}
-        {/* <Route path="/problem-list" exact element={<ProblemList />} /> */}
+        <Route path="/problem-list" exact element={<ProblemList />} />
       </Routes>
     </BrowserRouter>
   );
