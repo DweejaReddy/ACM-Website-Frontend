@@ -1,0 +1,68 @@
+#padding{
+    margin-top: -45px; 
+    padding-right: 40px;
+}
+#card{
+    color:black;
+    background-color: white;
+}#card:hover{
+    color:#6888e0;
+    background-color: aliceblue;
+}
+#size{
+    font-size: 13px;
+}
+
+
+
+
+
+#container{
+    background-image: linear-gradient(
+        -45deg,
+        rgba(90, 209, 240, 1) 0%,
+        rgba(113, 222, 249, 1) 13%,
+        rgba(168, 229, 243, 1) 29%,
+        rgba(194, 241, 252, 1) 49%,
+        rgba(202, 242, 250, 1) 74%,
+        rgba(227, 244, 248, 1) 94%,
+        rgb(185, 236, 247) 100%
+      );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#color:hover{
+   background-color: #6888e0;
+   color: white;
+}
+#butn:after{
+    background-color: #4e8be6;
+    padding: 10px;
+    color: aliceblue;
+    content:'Solve Challenge';
+    border-radius: 12px;
+
+}#butn:hover:after{
+    background-color: #217b2b;
+    padding: 10px;
+    color: white;
+    content: "Let's solve it";
+    padding-left: 21px;
+    padding-right: 21px;
+}
