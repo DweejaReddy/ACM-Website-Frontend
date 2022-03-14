@@ -7,7 +7,7 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-
+import Pagination from "../utils/Pagination";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -23,30 +23,32 @@ const ProblemList = () => {
 	}));
 
 	const [data, setData] = useState([]);
+	const [filterData, setFilterData] = useState([]);
 	const [filter, setFilter] = useState("");
-	const getTodos = () => {
+
+	useEffect(() => {
 		fetch("https://622c2314087e0e041e040caa.mockapi.io/problemlist")
 			.then((response) => response.json())
 			.then((json) => {
 				console.log(json);
-				const filteredData = json.filter((dt) =>
-					dt.Problemtitle.toLowerCase().includes(filter.toLowerCase()),
-				);
-				console.log(filteredData);
-				setData(filteredData);
+				setData(json);
+				setFilterData(json);
 			});
-	};
+	}, []);
 
 	useEffect(() => {
-		getTodos();
-		console.log(data);
+		const filteredData = data.filter((dt) =>
+			dt.Problemtitle.toLowerCase().includes(filter.toLowerCase()),
+		);
+		setFilterData(filteredData);
 	}, [filter]);
+
 	return (
 		<div id={Problem.container}>
 			<Navbar />
 			<div>
 				<nav
-					className=" container navbar-expand-lg navbar-light  bg-light shadow-lg  mb-2 bg-body rounded"
+					className="container navbar-expand-lg navbar-light bg-light shadow-lg mb-2 bg-body rounded"
 					style={{ borderTop: "1px solid #7ad6fe" }}>
 					<HomeIcon className="my-2" /> Home <KeyboardDoubleArrowRightIcon />{" "}
 					ProblemList
@@ -57,24 +59,19 @@ const ProblemList = () => {
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={2}>
 						<Grid item xs={9} className=" my-3">
-							{data.map((item) => {
-								return (
-									<div>
-										<ProblemCard
-											title={item.Problemtitle}
-											tags={item.tags}
-											maxscore={item.score}
-											success={item.accuracy}
-											link={item.link}
-										/>
-									</div>
-								);
-							})}
+							{data.length > 0 && (
+								<Pagination
+									data={filterData}
+									RenderComponent={ProblemCard}
+									pageLimit={2}
+									dataLimit={10}
+								/>
+							)}
 						</Grid>
 						<Grid item xs={3}>
 							<div className="d-flex justify-content-end m-3">
 								<Paper
-									className="shadow-lg   bg-body "
+									className="shadow-lg bg-body "
 									component="form"
 									sx={{
 										borderRadius: 12,
@@ -87,7 +84,7 @@ const ProblemList = () => {
 										sx={{ ml: 1, flex: 1 }}
 										placeholder="Search Question Here"
 										inputProps={{ "aria-label": "Search Question Here" }}
-										onChange={(e) => setFilter(e.target.value)}
+										onChange={(e) => setFilter((value) => e.target.value)}
 									/>
 									<IconButton
 										type="submit"
