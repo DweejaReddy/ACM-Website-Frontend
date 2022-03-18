@@ -64,39 +64,59 @@
     font-weight: bold;
 }
 
+.text1{
+  margin-top: -210px;
+}
+
 @media only screen and (max-width:767px){
     .text{
         font-size: 6vw;
     }
+
 }
 
+@media screen and (min-width:768px){
+  .text1{
+    margin-top: -80px;
+  }
 
-.btnCreate::after, .btnCreate::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 50%;
-  transform: skewX(30deg);
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: -2;
+  .btnCreate::after, .btnCreate::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    transform: skewX(30deg);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: -2;
+  }
+  .btnCreate::before {
+    background-color: #f14688;
+    top: -1rem;
+    left: 0rem;
+  }
+  .btnCreate::after {
+    background-color: #f14688;
+    top: 1rem;
+    left: 8rem;
+  }
+  .btnCreate:hover::before, .btnCreate:hover::after {
+    top: 0;
+    transform: skewx(0deg);
+  }
+  .btnCreate:hover::after {
+    left: 0rem;
+  }
+  .btnCreate:hover::before {
+    left: 7.5rem;
+  }
 }
-.btnCreate::before {
-  background-color: #f14688;
-  top: -1rem;
-  left: 0rem;
-}
-.btnCreate::after {
-  background-color: #f14688;
-  top: 1rem;
-  left: 8rem;
-}
-.btnCreate:hover::before, .btnCreate:hover::after {
-  top: 0;
-  transform: skewx(0deg);
-}
-.btnCreate:hover::after {
-  left: 0rem;
-}
-.btnCreate:hover::before {
-  left: 7.5rem;
+
+@media screen and (max-width:767px){
+    .bg{
+      height: 90vh;
+    }
+    .btnCreate{
+      background: #f14688;
+      border-radius: 10px;
+    }
 }

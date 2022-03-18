@@ -81,13 +81,13 @@ const HomeScreen = () => {
 
             <iframe
               className="d-block d-lg-none"
-              style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+              style={{ width: "100%", height: "100%", pointerEvents: "none", marginTop:'-120px' }}
               src="https://embed.lottiefiles.com/animation/90753"
             ></iframe>
           </div>
 
-          <div className="col-12 col-md-6" style={{marginTop:'-80px'}}>
-            <h3 className={`${homeStyle.text}`}>
+          <div className={`col-12 col-md-6 ${homeStyle.text1}`}>
+            <h3 className={`${homeStyle.text} text-center `}>
               Hey, No Projects! Create one now and improve your frontend
               Skills!!
             </h3>

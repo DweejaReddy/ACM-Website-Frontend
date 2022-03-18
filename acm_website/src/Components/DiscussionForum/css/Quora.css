@@ -1,8 +1,23 @@
 .quora {
   width: "100%";
+  background-size: 100vw auto;
+  /* background-image: linear-gradient(
+    -45deg,
+    rgba(90, 209, 240, 1) 0%,
+    rgba(113, 222, 249, 1) 13%,
+    rgba(168, 229, 243, 1) 29%,
+    rgba(194, 241, 252, 1) 49%,
+    rgba(202, 242, 250, 1) 74%,
+    rgba(227, 244, 248, 1) 94%,
+    rgb(185, 236, 247) 100%
+  ); */
+  background-color: rgb(147, 217, 235);
+  background-attachment:fixed;
+  background-image: url(../../../../public/image/bgDiscussion2.png);
+  background-position:0 420%;
   min-width: fit-content;
-}
 
+}
 .quora__contents {
   display: flex;
   justify-content: center;
@@ -10,6 +25,7 @@
   background-color: rgba(0, 0, 0, 0.05);
   min-width: fit-content;
   width: 100%;
+
 }
 
 .quora__content {

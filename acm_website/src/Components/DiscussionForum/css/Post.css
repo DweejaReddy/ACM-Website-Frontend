@@ -47,7 +47,7 @@
   margin-left: auto;
   cursor: pointer;
   padding: 7px;
-  background-color: #222;
+  background-color: rgb(34, 140, 240);
   outline: none;
   border: none;
   color: lightgray;
@@ -58,7 +58,7 @@
 
 .post__btnAnswer:hover {
   color: #222;
-  background: lightgray;
+  background: rgb(122, 147, 228);
 }
 
 .post__question > p:hover {
@@ -143,7 +143,7 @@
 }
 
 .modal__question > p > .name {
-  color: black;
+  color: rgb(16, 97, 218);
   font-weight: bold;
 }
 
@@ -174,7 +174,8 @@
   border: none;
   margin-top: 10px;
   outline: none;
-  color: gray;
+  color:rgb(255, 255, 255);
+  background-color: #000;
   font-weight: 500;
   padding: 10px;
   border-radius: 33px;
@@ -182,13 +183,14 @@
 }
 
 .modal__button > .cancle:hover {
-  color: red;
+  color: #fff;
+  background-color: rgb(34, 140, 240);
 }
 .modal__button > .add {
   border: none;
   outline: none;
   margin-top: 5px;
-  background-color: #222;
+  background-color: rgb(34, 140, 240);
   color: white;
   font-weight: 700;
   padding: 10px;
@@ -197,8 +199,8 @@
   width: 50%;
 }
 .modal__button > .add:hover {
-  background-color: #eee;
-  color: #222;
+  background-color: rgb(5, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .react-responsive-modal-modal {
