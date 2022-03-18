@@ -53,9 +53,9 @@ const NavBar = () => {
             
 
             <Box sx={{ flexGrow: 1 }}>
-                <Toolbar variant="dense">
+                <Toolbar variant="dense" >
                     <div>
-                    <Button className={`${homeStyle.btnCreate} `} style={{position: 'relative',letterSpacing: '0.25em',margin: '2rem auto',padding: '1rem 2.5rem',background: 'transparent',outline: 'none',fontSize: '16px',color: '#fff'}} onClick={handleClickOpen}>{"Create now"}<AddBoxIcon></AddBoxIcon></Button>
+                    <Button className={`${homeStyle.btnCreate} `} style={{position: 'relative',letterSpacing: '0.25em',margin: '2rem auto',padding: '1rem 2.5rem',outline: 'none',fontSize: '16px',color: '#fff'}} onClick={handleClickOpen}>{"Create now"}<AddBoxIcon></AddBoxIcon></Button>
                     
                     <div className="homebuttons">
                         <Dialog open={open} className='text-center' onClose={handleClose}>

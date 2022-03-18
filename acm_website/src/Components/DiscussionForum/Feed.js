@@ -29,6 +29,10 @@ function Feed({searchTerm}) {
   return (
     <div className="feed">
       <QuoraBox />
+      {/* <Post/>
+      <Post/>
+      <Post/>
+      <Post/> */}
       {postToShow.map( (post, index )=>( <Post key={index} post={post}/> )) }
       
     </div>

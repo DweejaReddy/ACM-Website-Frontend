@@ -1,13 +1,12 @@
 .widget__contents {
   display: flex;
   cursor: pointer;
-}
 
+}
 .widget__content {
   margin: 5px;
   display: flex;
   padding: 5px;
-  border-bottom: 1px solid lightgray;
 }
 
 .widget__content > img {
@@ -25,4 +24,9 @@
 .widget__contentTitle > p {
   color: gray;
   font-size: small;
+}
+@media screen and (max-width:600px){
+  .widget__contents{
+    display:none;
+  }
 }

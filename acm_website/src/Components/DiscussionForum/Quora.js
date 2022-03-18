@@ -3,7 +3,9 @@ import Feed from "./Feed";
 import QuoraHeader from "./QuoraHeader";
 import Sidebar from "./Sidebar";
 import Widget from "./Widget";
+import Footer from "../UI/Footer";
 import "./css/Quora.css";
+
 
 
 
@@ -23,6 +25,7 @@ function Quora() {
           <Widget />
         </div>
       </div>
+      <Footer id="contact"/>
     </div>
   );
 }

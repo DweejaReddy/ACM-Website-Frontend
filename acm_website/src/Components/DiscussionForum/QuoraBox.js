@@ -4,7 +4,7 @@ import "./css/QuoraBox.css";
 
 function QuoraBox() {
   return (
-    <div className="quoraBox">
+    <div className="quoraBox shadow-lg">
       <div className="quoraBox__info">
         <Avatar />
       </div>

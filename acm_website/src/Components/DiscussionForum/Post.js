@@ -70,7 +70,7 @@ function Post({post}) {
     }
   }
   return (
-    <div className="post">
+    <div className="post shadow-lg">
       <div className="post__info">
         <Avatar />
         <h4>User Name</h4>
