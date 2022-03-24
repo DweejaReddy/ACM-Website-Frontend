@@ -24,7 +24,7 @@ import "brace/theme/eclipse";
 import "brace/theme/terminal";
 import "brace/theme/twilight";
 import "brace/theme/github";
-
+import Input from "./Input";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 //Styling using MAterial UI
@@ -50,9 +50,10 @@ import CopyAllIcon from '@mui/icons-material/CopyAll';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import PublishIcon from '@mui/icons-material/Publish';
-import InputIcon from '@mui/icons-material/Input';
 import { VscOutput } from "react-icons/vsc";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import "./compiler.css";
+
 
 
 const Accordion = styled((props) => (
@@ -115,20 +116,23 @@ function OnlineCompiler() {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-  const Function1 = () => {
-    let x = document.getElementById("input");
-    let y = document.getElementById("output");
-    let a = document.getElementById("btn1");
-    let b = document.getElementById("btn2");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.style.display = "none";
-    }
-    a.style.backgroundColor = "#f54242";
-    a.style.color = "black";
-    b.style.backgroundColor = "#1976d2";
-    b.style.color = "white";
-  };
+  
+
+  // const Function1 = () => {
+  //   let x = document.getElementById("input");
+  //   let y = document.getElementById("output");
+  //   let a = document.getElementById("btn1");
+  //   let b = document.getElementById("btn2");
+  //   if (x.style.display === "none") {
+  //     x.style.display = "block";
+  //     y.style.display = "none";
+  //   }
+  //   a.style.backgroundColor = "#f54242";
+  //   a.style.color = "black";
+  //   b.style.backgroundColor = "#1976d2";
+  //   b.style.color = "white";
+  // };
+
 
   const Function2 = () => {
     let z = document.getElementById("output");
@@ -242,6 +246,18 @@ function OnlineCompiler() {
     return result;
   };
   const handle = useFullScreenHandle();
+  const [style, setStyle] = useState("cont");
+  
+  const changeStyle = () => {
+    console.log("you just clicked");
+    if(style==="cont"){
+      setStyle("cont2");
+    }else{
+      setStyle("cont");
+    }
+  }
+
+
   return loading ? (
     <>
       <Preloader />
@@ -392,9 +408,10 @@ function OnlineCompiler() {
                SUBMIT <PublishIcon/>
               </Button>
               <Button  className="d-none d-lg-block" size="medium" onClick={handle.enter}><FullscreenIcon/></Button>
-              <Button   className="d-none d-lg-block" size="medium" ><CopyAllIcon/></Button>
+              <Button  onClick={() => {navigator.clipboard.writeText({input});
+               alert("Copied to clipboard."
+               );}} className="d-none d-lg-block" size="medium" ><CopyAllIcon/></Button>
             </Box>
-
             <Box
               display="flex"
               justifyContent="center"
@@ -424,9 +441,9 @@ function OnlineCompiler() {
               <Button  className="d-block d-lg-none" size="medium" onClick={handle.enter}><FullscreenIcon/></Button>
               <Button   className="d-block d-lg-none" size="medium" ><CopyAllIcon/></Button>
             </Box>
-           
-            <AceEditor
-            style={{display:'grid',resize:'vertical'}}
+           <div className={style} >
+            <AceEditor 
+            style={{display:'grid'}}
               placeholder="//Your Code Here"
               mode={langForEditor}
               showPrintMargin={false}
@@ -446,14 +463,14 @@ function OnlineCompiler() {
                 tabSize: 4,
               }}
               width="100%"
-              height="82vh"
-            /> 
+              height="100%" 
+            /> </div>
         
           </Grid>
 
           <Accordion
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
+            // expanded={expanded === "panel1"}
+            // onChange={handleChange("panel1")}
           >
             <Box
               display="flex"
@@ -472,14 +489,15 @@ function OnlineCompiler() {
                 className=""
                 aria-label="outlined primary button group"
               >
-                <Button
+                {/* <Button
                   style={{  }}
                   onMouseEnter={{ color: "black" }} className="m-1"
                   id="btn1"
                   onClick={Function1}
                 >
                  Input  <InputIcon/>
-                </Button>
+                </Button> */}
+                <Input/>
                 <Button
                   style={{  backgroundColor: "#f54242" }} className="m-1"
                   id="btn2"
@@ -494,8 +512,9 @@ function OnlineCompiler() {
                   Clear  <ClearAllIcon/>
                 </Button>
                 <AccordionSummary
-                  aria-controls="panel1d-content"
-                  id="panel1d-header" 
+                 aria-controls="panel1a-content"
+                 id="panel1a-header"
+           onClick={changeStyle}
                 ></AccordionSummary>
               </ButtonGroup>
               
@@ -503,33 +522,8 @@ function OnlineCompiler() {
             <Grid container>
               <Grid item sm={12}>
                 <div className="" style={{ display: "none" }} id="input">
-                  <AceEditor 
-                  style={{display:'flex',resize:'horizontal'}}
-                    placeholder="//Input"
-                    mode={langForEditor}
-                    theme={theme}
-                    name="input-box"
-                    value={input}
-                    onChange={(input) => {
-                      setInput(input);
-                    }}
-                    fontSize={18}
-                    showPrintMargin={false}
-                    showGutter={true}
-                    highlightActiveLine={true}
-                    setOptions={{
-                      showLineNumbers: true,
-                      tabSize: 4,
-                      useWorker: false,
-                    }}
-                    width="100vw"
-                    height="50vh"
-                  />
-                </div>
-              </Grid>
-              <Grid sm={12} className="" id="output">
-                <AceEditor
-                style={{resize:'vertical'}}
+                <AceEditor 
+                // style={{resize:'vertical'}}
                   placeholder="//Output"
                   theme={theme}
                   name="output-box"
@@ -546,7 +540,32 @@ function OnlineCompiler() {
                     useWorker: false,
                     readOnly: true,
                   }}
-                  width="100vw"
+                  width="100vw" className=""
+                  height="50vh"
+                  editorProps={{ readOnly: true }}
+                />
+                </div>
+              </Grid>
+              <Grid sm={12} className="" id="output">
+                <AceEditor 
+                // style={{resize:'vertical'}}
+                  placeholder="//Output"
+                  theme={theme}
+                  name="output-box"
+                  value={`Status : ${status === null ? "" : status}\nJobId : ${
+                    jobId === null ? "" : jobId
+                  }\n${renderTimeDetails()}\nOutput : \n${output}`}
+                  fontSize={18}
+                  showPrintMargin={false}
+                  showGutter={true}
+                  highlightActiveLine={true}
+                  setOptions={{
+                    showLineNumbers: true,
+                    tabSize: 4,
+                    useWorker: false,
+                    readOnly: true,
+                  }}
+                  width="100vw" className=""
                   height="50vh"
                   editorProps={{ readOnly: true }}
                 />
